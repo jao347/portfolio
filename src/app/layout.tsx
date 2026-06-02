@@ -16,34 +16,59 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+const SITE_URL = 'https://jcnbahandi.vercel.app'
+const OG_DESCRIPTION =
+  'Senior full-stack developer specializing in React, Next.js, Web3, and AI automation systems.'
+
 export const metadata: Metadata = {
   title: 'Jay Cris Bahandi — Full-Stack Developer',
   description:
-    'Senior full-stack developer from Cebu, Philippines specializing in React, Next.js, Node.js, Web3, and AI automation. Building scalable applications and exceptional digital experiences.',
+    'Senior full-stack developer from Cebu, Philippines with 6+ years of experience specializing in React, Next.js, Node.js, Web3, and AI automation. Building scalable applications and exceptional digital experiences.',
   keywords: [
-    'full-stack developer', 'React developer', 'Next.js developer', 'Node.js',
-    'TypeScript', 'Web3', 'blockchain', 'AI automation', 'NestJS', 'PostgreSQL',
-    'Cebu Philippines', 'remote developer', 'freelance developer',
+    'Jay Cris Bahandi',
+    'full-stack developer',
+    'React developer',
+    'Next.js developer',
+    'Node.js developer',
+    'TypeScript developer',
+    'Web3 developer',
+    'blockchain developer',
+    'AI automation',
+    'NestJS',
+    'PostgreSQL',
+    'Cebu Philippines developer',
+    'remote developer',
+    'freelance developer',
+    'senior software engineer',
+    'frontend developer',
+    'backend developer',
+    'software engineer Philippines',
+    'hire developer Philippines',
   ],
-  authors: [{ name: 'Jay Cris Bahandi', url: 'https://jaycris.dev' }],
+  authors: [{ name: 'Jay Cris Bahandi', url: SITE_URL }],
   creator: 'Jay Cris Bahandi',
-  metadataBase: new URL('https://jaycris.dev'),
+  applicationName: 'Jay Cris Bahandi Portfolio',
+  category: 'technology',
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: SITE_URL },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://jaycris.dev',
+    url: SITE_URL,
     title: 'Jay Cris Bahandi — Full-Stack Developer',
-    description:
-      'Senior full-stack developer specializing in React, Next.js, Web3, and AI automation systems.',
+    description: OG_DESCRIPTION,
     siteName: 'Jay Cris Bahandi Portfolio',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Jay Cris Bahandi — Full-Stack Developer',
-    description:
-      'Senior full-stack developer specializing in React, Next.js, Web3, and AI automation systems.',
+    description: OG_DESCRIPTION,
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
+  },
 }
 
 export const viewport: Viewport = {
@@ -62,6 +87,36 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-[#09090b] text-zinc-50 antialiased selection:bg-indigo-500/30 selection:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Jay Cris Bahandi',
+              url: 'https://jcnbahandi.vercel.app',
+              jobTitle: 'Senior Full-Stack Developer',
+              description:
+                'Senior full-stack developer from Cebu, Philippines with 6+ years of experience building production applications in React, Next.js, Node.js, Web3, and AI automation.',
+              image: 'https://jcnbahandi.vercel.app/opengraph-image',
+              email: 'jcnbahandi@gmail.com',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Cebu City',
+                addressCountry: 'PH',
+              },
+              sameAs: [
+                'https://github.com/jao347',
+                'https://www.linkedin.com/in/jay-cris-bahandi-0a3b9821a/',
+              ],
+              knowsAbout: [
+                'React', 'Next.js', 'Node.js', 'TypeScript', 'NestJS',
+                'PostgreSQL', 'Web3', 'Blockchain', 'AI Automation',
+                'Docker', 'AWS', 'Full-Stack Development',
+              ],
+            }),
+          }}
+        />
         <LoadingScreen />
         <CustomCursor />
         <ScrollProgress />
