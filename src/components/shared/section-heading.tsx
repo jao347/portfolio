@@ -29,15 +29,12 @@ export default function SectionHeading({
       className={cn('mb-16', centered && 'text-center', className)}
     >
       {eyebrow && (
-        <div className="mb-4 inline-flex items-center gap-2">
-          <span className="h-px w-6 bg-indigo-500" />
-          <span className="text-xs font-medium uppercase tracking-[0.15em] text-indigo-400">
-            {eyebrow}
-          </span>
-          <span className="h-px w-6 bg-indigo-500" />
+        <div className={cn('mb-5 inline-flex items-center gap-3', centered && 'justify-center')}>
+          <span className="h-1.5 w-1.5 bg-[#00ADB5]" />
+          <span className="mono-label">{eyebrow}</span>
         </div>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-5xl">
+      <h2 className="text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
         {title}{' '}
         {titleHighlight && (
           <span className="gradient-text">{titleHighlight}</span>

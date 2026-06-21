@@ -12,7 +12,7 @@ export default function Image() {
     (
       <div
         style={{
-          background: '#09090b',
+          background: '#222831',
           width: '100%',
           height: '100%',
           display: 'flex',
@@ -34,7 +34,7 @@ export default function Image() {
             width: 700,
             height: 700,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 65%)',
+            background: 'radial-gradient(circle, rgba(0, 173, 181,0.18) 0%, transparent 65%)',
           }}
         />
 
@@ -54,8 +54,8 @@ export default function Image() {
               display: 'flex',
               alignItems: 'center',
               gap: 10,
-              background: 'rgba(16,185,129,0.1)',
-              border: '1px solid rgba(16,185,129,0.25)',
+              background: 'rgba(0, 173, 181,0.1)',
+              border: '1px solid rgba(0, 173, 181,0.25)',
               borderRadius: 999,
               padding: '10px 24px',
               color: '#34d399',
@@ -81,7 +81,7 @@ export default function Image() {
             }}
           >
             Jay Cris&nbsp;
-            <span style={{ color: '#818cf8' }}>Bahandi</span>
+            <span style={{ color: '#00ADB5' }}>Bahandi</span>
           </div>
 
           {/* subtitle */}

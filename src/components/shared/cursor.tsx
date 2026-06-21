@@ -35,11 +35,11 @@ export default function CustomCursor() {
     }
 
     const handleLinkHover = () => {
-      cursorRef.current?.classList.add('scale-150', 'border-indigo-400', 'bg-indigo-500/10')
+      cursorRef.current?.classList.add('scale-150', 'border-[#00ADB5]', 'bg-[#00ADB5]/10')
     }
 
     const handleLinkLeave = () => {
-      cursorRef.current?.classList.remove('scale-150', 'border-indigo-400', 'bg-indigo-500/10')
+      cursorRef.current?.classList.remove('scale-150', 'border-[#00ADB5]', 'bg-[#00ADB5]/10')
     }
 
     window.addEventListener('mousemove', moveCursor)
@@ -68,13 +68,13 @@ export default function CustomCursor() {
       {/* Outer ring */}
       <motion.div
         ref={cursorRef}
-        className="pointer-events-none fixed z-[9999] h-8 w-8 rounded-full border border-indigo-500/50 transition-all duration-150 hidden lg:block"
+        className="pointer-events-none fixed z-[9999] h-8 w-8 rounded-full border border-[#00ADB5]/50 transition-all duration-150 hidden lg:block"
         style={{ left: cursorX, top: cursorY }}
       />
       {/* Inner dot */}
       <motion.div
         ref={dotRef}
-        className="pointer-events-none fixed z-[9999] h-1.5 w-1.5 translate-x-[13px] translate-y-[13px] rounded-full bg-indigo-400 transition-all duration-150 hidden lg:block"
+        className="pointer-events-none fixed z-[9999] h-1.5 w-1.5 translate-x-[13px] translate-y-[13px] rounded-full bg-[#00ADB5] transition-all duration-150 hidden lg:block"
         style={{ left: dotX, top: dotY }}
       />
     </>

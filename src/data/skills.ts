@@ -5,7 +5,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'frontend',
     title: 'Frontend',
     icon: '⬡',
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
     skills: [
       { name: 'React', level: 95 },
       { name: 'Next.js', level: 95 },
@@ -18,7 +18,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'backend',
     title: 'Backend',
     icon: '⬡',
-    gradient: 'from-violet-500 to-purple-500',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
     skills: [
       { name: 'Node.js', level: 92 },
       { name: 'NestJS', level: 88 },
@@ -29,7 +29,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'databases',
     title: 'Databases',
     icon: '⬡',
-    gradient: 'from-emerald-500 to-teal-500',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
     skills: [
       { name: 'PostgreSQL', level: 90 },
       { name: 'MongoDB', level: 88 },
@@ -41,7 +41,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'blockchain',
     title: 'Blockchain & Web3',
     icon: '⬡',
-    gradient: 'from-orange-500 to-pink-500',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
     skills: [
       { name: 'Wagmi', level: 85 },
       { name: 'Ethers.js', level: 82 },
@@ -53,7 +53,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'automation',
     title: 'Automation',
     icon: '⬡',
-    gradient: 'from-rose-500 to-red-500',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
     skills: [
       { name: 'Make', level: 88 },
       { name: 'n8n', level: 85 },
@@ -63,7 +63,7 @@ export const skillCategories: SkillCategory[] = [
     id: 'tools',
     title: 'Tools & DevOps',
     icon: '⬡',
-    gradient: 'from-indigo-500 to-blue-500',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
     skills: [
       { name: 'Docker', level: 82 },
       { name: 'GitHub', level: 95 },

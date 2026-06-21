@@ -21,14 +21,14 @@ const SOCIALS = [
     handle: 'Jay Cris Bahandi',
     href: LINKEDIN_URL,
     icon: LinkedinIcon,
-    color: 'hover:border-blue-500/40 hover:bg-blue-500/10 hover:text-blue-300',
+    color: 'hover:border-[#00ADB5]/40 hover:bg-[#00ADB5]/10 hover:text-[#00ADB5]',
   },
   {
     label: 'Email',
     handle: EMAIL,
     href: `mailto:${EMAIL}`,
     icon: Mail,
-    color: 'hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-300',
+    color: 'hover:border-[#00ADB5]/40 hover:bg-[#00ADB5]/10 hover:text-[#00ADB5]',
   },
 ]
 
@@ -64,7 +64,7 @@ function Input({
     <div className={cn('flex flex-col gap-1.5', className)}>
       <label htmlFor={id} className="text-xs font-medium text-zinc-400">
         {label}
-        {required && <span className="ml-1 text-indigo-400">*</span>}
+        {required && <span className="ml-1 text-[#00ADB5]">*</span>}
       </label>
       <input
         id={id}
@@ -73,7 +73,7 @@ function Input({
         value={value}
         onChange={e => onChange(e.target.value)}
         placeholder={placeholder}
-        className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-indigo-500/50 focus:bg-indigo-500/[0.04] focus:ring-1 focus:ring-indigo-500/30"
+        className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-[#00ADB5]/50 focus:bg-[#00ADB5]/[0.04] focus:ring-1 focus:ring-[#00ADB5]/30"
       />
     </div>
   )
@@ -95,12 +95,20 @@ export default function Contact() {
     e.preventDefault()
     setFormState('loading')
 
-    // Simulate form submission
-    await new Promise(res => setTimeout(res, 1500))
-    setFormState('success')
-    setData({ name: '', email: '', subject: '', message: '' })
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+      if (!res.ok) throw new Error('Request failed')
 
-    setTimeout(() => setFormState('idle'), 4000)
+      setFormState('success')
+      setData({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setFormState('idle'), 4000)
+    } catch {
+      setFormState('error')
+    }
   }
 
   return (
@@ -126,10 +134,10 @@ export default function Contact() {
             <div className="glass rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00ADB5] opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00ADB5]" />
                 </span>
-                <p className="text-xs font-medium text-emerald-400 uppercase tracking-widest">Available Now</p>
+                <p className="text-xs font-medium text-[#00ADB5] uppercase tracking-widest">Available Now</p>
               </div>
               <h3 className="font-semibold text-zinc-100 text-base mb-2">Ready to collaborate</h3>
               <p className="text-sm text-zinc-500 leading-relaxed mb-4">
@@ -137,7 +145,7 @@ export default function Contact() {
                 Response time: within 24 hours.
               </p>
               <div className="flex items-center gap-1.5 text-sm text-zinc-500">
-                <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-indigo-400" />
+                <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-[#00ADB5]" />
                 Cebu, Philippines · GMT+8
               </div>
             </div>
@@ -184,8 +192,8 @@ export default function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex flex-col items-center justify-center gap-4 py-12 text-center"
                 >
-                  <div className="h-16 w-16 rounded-full border border-emerald-500/30 bg-emerald-500/10 flex items-center justify-center">
-                    <CheckCircle className="h-8 w-8 text-emerald-400" />
+                  <div className="h-16 w-16 rounded-full border border-[#00ADB5]/30 bg-[#00ADB5]/10 flex items-center justify-center">
+                    <CheckCircle className="h-8 w-8 text-[#00ADB5]" />
                   </div>
                   <h3 className="text-lg font-semibold text-zinc-100">Message sent!</h3>
                   <p className="text-sm text-zinc-500 max-w-xs">
@@ -225,7 +233,7 @@ export default function Contact() {
 
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="message" className="text-xs font-medium text-zinc-400">
-                      Message <span className="text-indigo-400">*</span>
+                      Message <span className="text-[#00ADB5]">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -234,9 +242,16 @@ export default function Contact() {
                       onChange={e => update('message')(e.target.value)}
                       placeholder="Tell me about your project, timeline, budget, or anything else you'd like to discuss..."
                       rows={5}
-                      className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-indigo-500/50 focus:bg-indigo-500/[0.04] focus:ring-1 focus:ring-indigo-500/30 resize-none"
+                      className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-[#00ADB5]/50 focus:bg-[#00ADB5]/[0.04] focus:ring-1 focus:ring-[#00ADB5]/30 resize-none"
                     />
                   </div>
+
+                  {formState === 'error' && (
+                    <p role="alert" className="text-sm text-[#00ADB5]">
+                      Couldn&apos;t send your message. Please email me directly at{' '}
+                      <a href={`mailto:${EMAIL}`} className="underline">{EMAIL}</a>.
+                    </p>
+                  )}
 
                   <motion.button
                     type="submit"
@@ -248,8 +263,8 @@ export default function Contact() {
                       'disabled:opacity-70 disabled:cursor-not-allowed',
                     )}
                     style={{
-                      background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-                      boxShadow: '0 0 20px rgba(99,102,241,0.35)',
+                      background: 'linear-gradient(135deg, #00ADB5, #00ADB5)',
+                      boxShadow: '0 0 20px rgba(0, 173, 181,0.35)',
                     }}
                   >
                     {formState === 'loading' ? (
@@ -267,7 +282,7 @@ export default function Contact() {
 
                   <p className="text-center text-xs text-zinc-600">
                     Or email me directly at{' '}
-                    <a href={`mailto:${EMAIL}`} className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                    <a href={`mailto:${EMAIL}`} className="text-[#00ADB5] hover:text-[#00ADB5] transition-colors">
                       {EMAIL}
                     </a>
                   </p>

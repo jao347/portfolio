@@ -72,7 +72,7 @@ function TypingName() {
       {/* blinking cursor — hides once typing is done */}
       {!done && (
         <span
-          className="ml-0.5 inline-block w-[3px] rounded-sm bg-indigo-400 align-middle"
+          className="ml-0.5 inline-block w-[3px] rounded-sm bg-[#00ADB5] align-middle"
           style={{
             height: '0.85em',
             animation: 'typing-cursor 0.8s step-end infinite',
@@ -124,7 +124,7 @@ function FloatingBadge({ label, x, y, delay }: { label: string; x: string; y: st
       )}
       style={{ left: x, top: y, animation: `float ${8 + delay * 2}s ease-in-out infinite ${delay}s` }}
     >
-      <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
+      <span className="h-1.5 w-1.5 rounded-full bg-[#00ADB5]" />
       {label}
     </motion.div>
   )
@@ -168,7 +168,7 @@ export default function Hero() {
         <div
           className="h-[500px] w-[500px] rounded-full opacity-[0.04]"
           style={{
-            background: 'radial-gradient(circle, #6366f1 0%, transparent 60%)',
+            background: 'radial-gradient(circle, #00ADB5 0%, transparent 60%)',
             filter: 'blur(40px)',
           }}
         />
@@ -181,11 +181,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm text-emerald-400"
+          className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-[#00ADB5]/20 bg-[#00ADB5]/10 px-4 py-2 text-sm text-[#00ADB5]"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00ADB5] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00ADB5]" />
           </span>
           Available for new projects
           <Sparkles className="h-3.5 w-3.5" />
@@ -211,9 +211,9 @@ export default function Hero() {
           transition={{ delay: 0.65, duration: 0.5 }}
           className="mb-8 flex items-center gap-3"
         >
-          <div className="h-px w-12 bg-gradient-to-r from-transparent to-indigo-500" />
+          <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#00ADB5]" />
           <TitleCycler />
-          <div className="h-px w-12 bg-gradient-to-l from-transparent to-indigo-500" />
+          <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#00ADB5]" />
         </motion.div>
 
         {/* Bio */}
@@ -242,8 +242,8 @@ export default function Hero() {
             onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="group flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold text-white transition-all"
             style={{
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-              boxShadow: '0 0 24px rgba(99,102,241,0.4), 0 4px 15px rgba(0,0,0,0.3)',
+              background: 'linear-gradient(135deg, #00ADB5, #00ADB5)',
+              boxShadow: '0 0 24px rgba(0, 173, 181,0.4), 0 4px 15px rgba(0,0,0,0.3)',
             }}
           >
             View Projects
@@ -292,7 +292,7 @@ export default function Hero() {
               whileHover={{ scale: 1.1, y: -2 }}
               whileTap={{ scale: 0.95 }}
               aria-label={s.label}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-zinc-500 transition-all hover:border-indigo-500/30 hover:bg-indigo-500/10 hover:text-indigo-400"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-zinc-500 transition-all hover:border-[#00ADB5]/30 hover:bg-[#00ADB5]/10 hover:text-[#00ADB5]"
             >
               <s.icon className="h-4.5 w-4.5" />
             </motion.a>

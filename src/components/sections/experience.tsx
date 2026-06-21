@@ -7,19 +7,19 @@ import { experiences } from '@/data/experience'
 import { cn } from '@/lib/utils'
 
 const TYPE_COLORS: Record<string, string> = {
-  'full-time': 'border-indigo-500/20 bg-indigo-500/10 text-indigo-400',
-  'contract':  'border-amber-500/20 bg-amber-500/10 text-amber-400',
-  'freelance': 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400',
-  'part-time': 'border-violet-500/20 bg-violet-500/10 text-violet-400',
+  'full-time': 'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
+  'contract':  'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
+  'freelance': 'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
+  'part-time': 'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
 }
 
 const COMPANY_GRADIENTS: Record<string, string> = {
-  codebox:    'from-indigo-500 to-violet-500',
-  vertex:     'from-blue-500 to-cyan-500',
-  blocklabs:  'from-purple-500 to-pink-500',
-  virginia:   'from-emerald-500 to-teal-500',
-  ripeconcepts: 'from-orange-500 to-amber-500',
-  wisebox:    'from-rose-500 to-red-500',
+  codebox:    'from-[#00ADB5] to-[#00ADB5]',
+  vertex:     'from-[#00ADB5] to-[#00ADB5]',
+  blocklabs:  'from-[#00ADB5] to-[#00ADB5]',
+  virginia:   'from-[#00ADB5] to-[#00ADB5]',
+  ripeconcepts: 'from-[#00ADB5] to-[#00ADB5]',
+  wisebox:    'from-[#00ADB5] to-[#00ADB5]',
 }
 
 export default function Experience() {
@@ -35,11 +35,11 @@ export default function Experience() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500/30 via-white/[0.05] to-transparent hidden lg:block" />
+          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#00ADB5]/30 via-white/[0.05] to-transparent hidden lg:block" />
 
           <div className="space-y-4">
             {experiences.map((exp, i) => {
-              const gradient = COMPANY_GRADIENTS[exp.id] ?? 'from-indigo-500 to-violet-500'
+              const gradient = COMPANY_GRADIENTS[exp.id] ?? 'from-[#00ADB5] to-[#00ADB5]'
 
               return (
                 <motion.div
@@ -74,7 +74,7 @@ export default function Experience() {
 
                         <div>
                           <h3 className="font-semibold text-zinc-100 text-base">{exp.role}</h3>
-                          <p className="text-sm font-medium text-indigo-400">{exp.company}</p>
+                          <p className="text-sm font-medium text-[#00ADB5]">{exp.company}</p>
 
                           <div className="mt-2 flex flex-wrap gap-3 text-xs text-zinc-500">
                             <span className="flex items-center gap-1">
@@ -113,7 +113,7 @@ export default function Experience() {
                           transition={{ delay: i * 0.05 + ai * 0.04 + 0.2 }}
                           className="flex items-start gap-2 text-sm text-zinc-500"
                         >
-                          <ArrowRight className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-indigo-500" />
+                          <ArrowRight className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#00ADB5]" />
                           {a}
                         </motion.li>
                       ))}

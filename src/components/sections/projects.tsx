@@ -44,7 +44,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div
           className="absolute inset-0 rounded-full opacity-40 blur-3xl"
           style={{
-            background: `radial-gradient(circle at 50% 60%, var(--tw-gradient-from, #6366f1), transparent 70%)`,
+            background: `radial-gradient(circle at 50% 60%, var(--tw-gradient-from, #00ADB5), transparent 70%)`,
           }}
         />
 
@@ -58,8 +58,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {/* Featured star */}
         {project.featured && (
           <div className="absolute top-4 right-4">
-            <span className="flex items-center gap-1 rounded-full border border-amber-500/20 bg-amber-500/10 px-2.5 py-1 text-[11px] text-amber-400">
-              <Star className="h-2.5 w-2.5 fill-amber-400" />
+            <span className="flex items-center gap-1 rounded-full border border-[#00ADB5]/20 bg-[#00ADB5]/10 px-2.5 py-1 text-[11px] text-[#00ADB5]">
+              <Star className="h-2.5 w-2.5 fill-[#00ADB5]" />
               Featured
             </span>
           </div>
@@ -82,7 +82,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   rel="noopener noreferrer"
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-indigo-500/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-[#00ADB5]/30"
                   aria-label="View on GitHub"
                 >
                   <GithubIcon className="h-4 w-4" />
@@ -95,7 +95,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   rel="noopener noreferrer"
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-indigo-500/30"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-[#00ADB5]/30"
                   aria-label="View live"
                 >
                   <ExternalLink className="h-4 w-4" />
@@ -112,7 +112,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <h3 className="font-semibold text-zinc-100 text-base leading-tight group-hover:text-white transition-colors">
             {project.title}
           </h3>
-          <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-zinc-600 transition-all group-hover:text-indigo-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-zinc-600 transition-all group-hover:text-[#00ADB5] group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
 
         <p className="mb-4 text-sm text-zinc-500 leading-relaxed flex-1">
@@ -182,7 +182,7 @@ export default function Projects() {
               className={cn(
                 'rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200',
                 activeFilter === f
-                  ? 'bg-indigo-500 text-white shadow-[0_0_16px_rgba(99,102,241,0.4)]'
+                  ? 'bg-[#00ADB5] text-white shadow-[0_0_16px_rgba(0, 173, 181,0.4)]'
                   : 'border border-white/[0.07] bg-white/[0.03] text-zinc-400 hover:border-white/[0.12] hover:text-zinc-200'
               )}
             >
@@ -219,7 +219,7 @@ export default function Projects() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-indigo-500/30 hover:bg-indigo-500/[0.08] hover:text-indigo-300"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-[#00ADB5]/30 hover:bg-[#00ADB5]/[0.08] hover:text-[#00ADB5]"
           >
             <GithubIcon className="h-4 w-4" />
             View more on GitHub

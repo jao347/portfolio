@@ -26,7 +26,7 @@ export default function LoadingScreen() {
     <AnimatePresence>
       {isLoading && (
         <motion.div
-          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#09090b]"
+          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#222831]"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
@@ -37,10 +37,10 @@ export default function LoadingScreen() {
             transition={{ duration: 0.4, ease: 'easeOut' }}
             className="mb-8 relative"
           >
-            <div className="h-14 w-14 rounded-2xl border border-indigo-500/30 bg-indigo-500/10 flex items-center justify-center">
+            <div className="h-14 w-14 rounded-2xl border border-[#00ADB5]/30 bg-[#00ADB5]/10 flex items-center justify-center">
               <span className="gradient-text text-2xl font-bold">J</span>
             </div>
-            <div className="absolute inset-0 rounded-2xl animate-pulse-glow" style={{ boxShadow: '0 0 30px rgba(99,102,241,0.3)' }} />
+            <div className="absolute inset-0 rounded-2xl animate-pulse-glow" style={{ boxShadow: '0 0 30px rgba(0, 173, 181,0.3)' }} />
           </motion.div>
 
           {/* Name */}
@@ -59,7 +59,7 @@ export default function LoadingScreen() {
               className="h-full rounded-full"
               style={{
                 width: `${Math.min(progress, 100)}%`,
-                background: 'linear-gradient(to right, #6366f1, #8b5cf6, #ec4899)',
+                background: 'linear-gradient(to right, #00ADB5, #00ADB5, #00ADB5)',
                 transition: 'width 0.1s ease',
               }}
             />

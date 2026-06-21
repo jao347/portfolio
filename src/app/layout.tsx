@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#09090b',
+  themeColor: '#222831',
   width: 'device-width',
   initialScale: 1,
 }
@@ -86,7 +86,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-[#09090b] text-zinc-50 antialiased selection:bg-indigo-500/30 selection:text-white">
+      <body className="bg-[#222831] text-zinc-50 antialiased selection:bg-[#00ADB5]/30 selection:text-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

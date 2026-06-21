@@ -1,26 +1,27 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Monitor, Server, Database, Boxes, Bot, Wrench, type LucideIcon } from 'lucide-react'
 import { skillCategories } from '@/data/skills'
 import SectionHeading from '@/components/shared/section-heading'
 import { cn } from '@/lib/utils'
 
-const CATEGORY_ICONS = {
-  frontend: '🖥',
-  backend: '⚙️',
-  databases: '🗄',
-  blockchain: '⛓',
-  automation: '🤖',
-  tools: '🛠',
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  frontend: Monitor,
+  backend: Server,
+  databases: Database,
+  blockchain: Boxes,
+  automation: Bot,
+  tools: Wrench,
 }
 
 const CATEGORY_COLORS: Record<string, { border: string; bg: string; glow: string; bar: string }> = {
-  frontend:   { border: 'border-blue-500/20',   bg: 'bg-blue-500/[0.07]',    glow: 'rgba(59,130,246,0.15)',   bar: 'from-blue-500 to-cyan-400' },
-  backend:    { border: 'border-violet-500/20',  bg: 'bg-violet-500/[0.07]',  glow: 'rgba(139,92,246,0.15)',   bar: 'from-violet-500 to-purple-400' },
-  databases:  { border: 'border-emerald-500/20', bg: 'bg-emerald-500/[0.07]', glow: 'rgba(16,185,129,0.15)',   bar: 'from-emerald-500 to-teal-400' },
-  blockchain: { border: 'border-orange-500/20',  bg: 'bg-orange-500/[0.07]',  glow: 'rgba(249,115,22,0.15)',   bar: 'from-orange-500 to-pink-400' },
-  automation: { border: 'border-rose-500/20',    bg: 'bg-rose-500/[0.07]',    glow: 'rgba(244,63,94,0.15)',    bar: 'from-rose-500 to-red-400' },
-  tools:      { border: 'border-indigo-500/20',  bg: 'bg-indigo-500/[0.07]',  glow: 'rgba(99,102,241,0.15)',   bar: 'from-indigo-500 to-blue-400' },
+  frontend:   { border: 'border-[#00ADB5]/20',   bg: 'bg-[#00ADB5]/[0.07]',    glow: 'rgba(0, 173, 181,0.15)',   bar: 'from-[#00ADB5] to-[#00ADB5]' },
+  backend:    { border: 'border-[#00ADB5]/20',  bg: 'bg-[#00ADB5]/[0.07]',  glow: 'rgba(0, 173, 181,0.15)',   bar: 'from-[#00ADB5] to-[#00ADB5]' },
+  databases:  { border: 'border-[#00ADB5]/20', bg: 'bg-[#00ADB5]/[0.07]', glow: 'rgba(0, 173, 181,0.15)',   bar: 'from-[#00ADB5] to-[#00ADB5]' },
+  blockchain: { border: 'border-[#00ADB5]/20',  bg: 'bg-[#00ADB5]/[0.07]',  glow: 'rgba(0, 173, 181,0.15)',   bar: 'from-[#00ADB5] to-[#00ADB5]' },
+  automation: { border: 'border-[#00ADB5]/20',    bg: 'bg-[#00ADB5]/[0.07]',    glow: 'rgba(0, 173, 181,0.15)',    bar: 'from-[#00ADB5] to-[#00ADB5]' },
+  tools:      { border: 'border-[#00ADB5]/20',  bg: 'bg-[#00ADB5]/[0.07]',  glow: 'rgba(0, 173, 181,0.15)',   bar: 'from-[#00ADB5] to-[#00ADB5]' },
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -98,7 +99,10 @@ export default function Skills() {
                 {/* Header */}
                 <div className="relative mb-6 flex items-center gap-3">
                   <div className={cn('flex h-9 w-9 items-center justify-center rounded-xl border', colors.border, colors.bg)}>
-                    <span className="text-base">{CATEGORY_ICONS[cat.id as keyof typeof CATEGORY_ICONS] ?? '⚡'}</span>
+                    {(() => {
+                      const Icon = CATEGORY_ICONS[cat.id] ?? Wrench
+                      return <Icon className="h-4 w-4 text-[#00ADB5]" strokeWidth={1.75} />
+                    })()}
                   </div>
                   <p className="font-semibold text-zinc-100 text-sm">{CATEGORY_LABELS[cat.id]}</p>
                 </div>

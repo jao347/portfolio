@@ -101,7 +101,7 @@ export default function CommandPalette() {
                             document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' })
                           })
                         }
-                        className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-400 transition-colors aria-selected:bg-indigo-500/10 aria-selected:text-zinc-100 hover:bg-white/5 hover:text-zinc-100"
+                        className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-400 transition-colors aria-selected:bg-[#00ADB5]/10 aria-selected:text-zinc-100 hover:bg-white/5 hover:text-zinc-100"
                       >
                         <item.icon className="h-4 w-4" />
                         {item.label}
@@ -121,7 +121,7 @@ export default function CommandPalette() {
                             window.open(item.href, item.external ? '_blank' : '_self')
                           })
                         }
-                        className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-400 transition-colors aria-selected:bg-indigo-500/10 aria-selected:text-zinc-100 hover:bg-white/5 hover:text-zinc-100"
+                        className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-400 transition-colors aria-selected:bg-[#00ADB5]/10 aria-selected:text-zinc-100 hover:bg-white/5 hover:text-zinc-100"
                       >
                         <item.icon className="h-4 w-4" />
                         <span>{item.label}</span>

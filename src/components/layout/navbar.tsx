@@ -73,7 +73,7 @@ export default function Navbar() {
             whileTap={{ scale: 0.97 }}
             className="flex items-center gap-2.5 group"
           >
-            <div className="relative h-8 w-8 rounded-lg border border-indigo-500/30 bg-indigo-500/10 flex items-center justify-center transition-all group-hover:border-indigo-500/60 group-hover:bg-indigo-500/20">
+            <div className="relative h-8 w-8 rounded-lg border border-[#00ADB5]/30 bg-[#00ADB5]/10 flex items-center justify-center transition-all group-hover:border-[#00ADB5]/60 group-hover:bg-[#00ADB5]/20">
               <span className="gradient-text text-sm font-bold">J</span>
             </div>
             <span className="text-sm font-medium text-zinc-300 transition-colors group-hover:text-white">
@@ -122,8 +122,8 @@ export default function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => scrollTo('#contact')}
-              className="rounded-lg bg-indigo-500 px-4 py-1.5 text-sm font-medium text-white transition-all hover:bg-indigo-400"
-              style={{ boxShadow: '0 0 16px rgba(99,102,241,0.35)' }}
+              className="rounded-lg bg-[#00ADB5] px-4 py-1.5 text-sm font-medium text-white transition-all hover:bg-[#00ADB5]"
+              style={{ boxShadow: '0 0 16px rgba(0, 173, 181,0.35)' }}
             >
               Hire me
             </motion.button>
@@ -171,8 +171,8 @@ export default function Navbar() {
                   setMobileOpen(false)
                   scrollTo('#contact')
                 }}
-                className="w-full rounded-xl bg-indigo-500 py-3.5 text-center font-medium text-white"
-                style={{ boxShadow: '0 0 20px rgba(99,102,241,0.4)' }}
+                className="w-full rounded-xl bg-[#00ADB5] py-3.5 text-center font-medium text-white"
+                style={{ boxShadow: '0 0 20px rgba(0, 173, 181,0.4)' }}
               >
                 Get in Touch
               </button>

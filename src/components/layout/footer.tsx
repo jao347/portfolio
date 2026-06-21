@@ -27,7 +27,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="h-8 w-8 rounded-lg border border-indigo-500/30 bg-indigo-500/10 flex items-center justify-center">
+              <div className="h-8 w-8 rounded-lg border border-[#00ADB5]/30 bg-[#00ADB5]/10 flex items-center justify-center">
                 <span className="gradient-text text-sm font-bold">J</span>
               </div>
               <span className="text-sm font-medium text-zinc-300">Jay Cris Bahandi</span>
@@ -45,7 +45,7 @@ export default function Footer() {
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={s.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.03] text-zinc-400 transition-all hover:border-indigo-500/40 hover:bg-indigo-500/10 hover:text-indigo-400"
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.03] text-zinc-400 transition-all hover:border-[#00ADB5]/40 hover:bg-[#00ADB5]/10 hover:text-[#00ADB5]"
                 >
                   <s.icon className="h-4 w-4" />
                 </motion.a>
@@ -77,19 +77,19 @@ export default function Footer() {
           {/* Availability */}
           <div>
             <p className="mb-4 text-xs font-medium uppercase tracking-widest text-zinc-600">Status</p>
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-[#00ADB5]/20 bg-[#00ADB5]/10 px-4 py-2">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00ADB5] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00ADB5]" />
               </span>
-              <span className="text-sm text-emerald-400">Available for work</span>
+              <span className="text-sm text-[#00ADB5]">Available for work</span>
             </div>
             <p className="mt-4 text-sm text-zinc-500">
               Open to full-time roles, freelance projects, and consulting opportunities.
             </p>
             <a
               href={`mailto:${EMAIL}`}
-              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-indigo-400 hover:text-indigo-300 transition-colors link-hover"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#00ADB5] hover:text-[#00ADB5] transition-colors link-hover"
             >
               {EMAIL}
             </a>
@@ -101,7 +101,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Jay Cris Bahandi. All rights reserved.
           </p>
           <p className="flex items-center gap-1.5 text-xs text-zinc-600">
-            Built with <Heart className="h-3 w-3 text-rose-500 fill-rose-500" /> in Cebu, Philippines
+            Built with <Heart className="h-3 w-3 text-[#00ADB5] fill-[#00ADB5]" /> in Cebu, Philippines
           </p>
         </div>
       </div>
