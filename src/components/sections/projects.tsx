@@ -1,231 +1,78 @@
 'use client'
 
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink, ArrowUpRight, Star } from 'lucide-react'
-import { GithubIcon } from '@/components/shared/icons'
-import SectionHeading from '@/components/shared/section-heading'
 import { projects } from '@/data/projects'
 import { GITHUB_URL } from '@/lib/constants'
+import SectionHeading from '@/components/shared/section-heading'
 import { cn } from '@/lib/utils'
-import type { Project } from '@/types'
 
 const FILTERS = ['All', 'Automation', 'Enterprise', 'Web3', 'Analytics', 'Data']
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ delay: index * 0.07, duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      className="glass gradient-border-hover group relative flex flex-col overflow-hidden rounded-2xl transition-all duration-300 hover:-translate-y-1.5"
-    >
-      {/* Visual header */}
-      <div className="relative h-44 overflow-hidden">
-        {/* Gradient background */}
-        <div className={cn('absolute inset-0 bg-gradient-to-br', project.gradient, 'opacity-25')} />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-950/90" />
-
-        {/* Grid pattern */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-          }}
-        />
-
-        {/* Floating glow */}
-        <div
-          className="absolute inset-0 rounded-full opacity-40 blur-3xl"
-          style={{
-            background: `radial-gradient(circle at 50% 60%, var(--tw-gradient-from, #00ADB5), transparent 70%)`,
-          }}
-        />
-
-        {/* Category badge */}
-        <div className="absolute top-4 left-4">
-          <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[11px] font-medium text-zinc-300 backdrop-blur-sm">
-            {project.category}
-          </span>
-        </div>
-
-        {/* Featured star */}
-        {project.featured && (
-          <div className="absolute top-4 right-4">
-            <span className="flex items-center gap-1 rounded-full border border-[#00ADB5]/20 bg-[#00ADB5]/10 px-2.5 py-1 text-[11px] text-[#00ADB5]">
-              <Star className="h-2.5 w-2.5 fill-[#00ADB5]" />
-              Featured
-            </span>
-          </div>
-        )}
-
-        {/* Links overlay on hover */}
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.15 }}
-              className="absolute inset-0 flex items-center justify-center gap-3"
-            >
-              {project.github && (
-                <motion.a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-[#00ADB5]/30"
-                  aria-label="View on GitHub"
-                >
-                  <GithubIcon className="h-4 w-4" />
-                </motion.a>
-              )}
-              {project.live && (
-                <motion.a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/20 bg-black/50 text-white backdrop-blur-sm transition-all hover:bg-[#00ADB5]/30"
-                  aria-label="View live"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                </motion.a>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <h3 className="font-semibold text-zinc-100 text-base leading-tight group-hover:text-white transition-colors">
-            {project.title}
-          </h3>
-          <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-zinc-600 transition-all group-hover:text-[#00ADB5] group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </div>
-
-        <p className="mb-4 text-sm text-zinc-500 leading-relaxed flex-1">
-          {project.description}
-        </p>
-
-        {/* Metrics */}
-        <div className="mb-5 grid grid-cols-2 gap-2">
-          {project.metrics.slice(0, 4).map(m => (
-            <div key={m.label} className="rounded-lg border border-white/[0.05] bg-white/[0.02] px-3 py-2">
-              <p className="text-xs font-semibold text-zinc-200">{m.value}</p>
-              <p className="text-[10px] text-zinc-600 leading-tight">{m.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Stack chips */}
-        <div className="flex flex-wrap gap-1.5">
-          {project.stack.slice(0, 5).map(tech => (
-            <span
-              key={tech}
-              className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-[11px] text-zinc-400"
-            >
-              {tech}
-            </span>
-          ))}
-          {project.stack.length > 5 && (
-            <span className="rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 text-[11px] text-zinc-500">
-              +{project.stack.length - 5}
-            </span>
-          )}
-        </div>
-      </div>
-    </motion.article>
-  )
-}
-
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState('All')
+  const [filter, setFilter] = useState('All')
 
-  const filtered = activeFilter === 'All'
+  const filtered = filter === 'All'
     ? projects
-    : projects.filter(p => p.category === activeFilter || p.tags.includes(activeFilter))
+    : projects.filter(p => p.category === filter || p.tags.includes(filter))
 
   return (
-    <section id="projects" className="relative py-28 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="Projects"
-          title="Things I've"
-          titleHighlight="built"
-          description="Production-grade projects spanning enterprise SaaS, Web3 platforms, analytics systems, and AI automation tools."
-        />
+    <section id="projects" className="mt-16">
+      <SectionHeading title="THINGS I'VE BUILT" caption="enterprise SaaS, Web3 platforms, analytics & AI automation" />
 
-        {/* Filters */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="mb-10 flex flex-wrap gap-2"
-        >
-          {FILTERS.map(f => (
-            <button
-              key={f}
-              onClick={() => setActiveFilter(f)}
-              className={cn(
-                'rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200',
-                activeFilter === f
-                  ? 'bg-[#00ADB5] text-white shadow-[0_0_16px_rgba(0, 173, 181,0.4)]'
-                  : 'border border-white/[0.07] bg-white/[0.03] text-zinc-400 hover:border-white/[0.12] hover:text-zinc-200'
-              )}
+      {/* filter pills */}
+      <div className="mt-4 flex flex-wrap gap-2">
+        {FILTERS.map(f => (
+          <button
+            key={f}
+            onClick={() => setFilter(f)}
+            className={cn(
+              'font-bpmono rounded-[3px] border px-3 py-1.5 text-[11px] tracking-[1px] uppercase transition-colors',
+              filter === f
+                ? 'border-[var(--acc)] text-[var(--acc)]'
+                : 'border-[var(--line-strong)] text-[var(--body-3)] hover:border-[var(--acc)] hover:text-[var(--acc)]'
+            )}
+          >
+            {f}
+          </button>
+        ))}
+      </div>
+
+      <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {filtered.map(p => {
+          const num = String(projects.indexOf(p) + 1).padStart(2, '0')
+          return (
+            <article
+              key={p.id}
+              className="flex flex-col border border-[var(--line)] bg-[rgba(10,20,32,.5)] px-5 py-4"
             >
-              {f}
-            </button>
-          ))}
-        </motion.div>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <span className="font-bpmono text-sm font-bold text-[var(--acc)]">{num}</span>
+                <span className="font-bpmono rounded-[3px] border border-[var(--line-strong)] px-2 py-0.5 text-[10px] uppercase tracking-[2px] text-[var(--label)]">
+                  {p.category}
+                </span>
+                {p.featured && (
+                  <span className="font-bpmono -rotate-2 rounded-[3px] border-2 border-[var(--stamp)] px-[7px] py-0.5 text-[10px] font-bold tracking-[2px] text-[var(--stamp)]">
+                    FEATURED
+                  </span>
+                )}
+              </div>
+              <div className="font-gochi mt-2 text-[22px] leading-tight text-[var(--ink)]">{p.title}</div>
+              <div className="mt-1.5 text-[14px] leading-[22px] text-[var(--body-2)]">{p.description}</div>
+              <div className="font-bpmono mt-3 flex flex-col gap-1 text-[11px] text-[var(--label)]">
+                {p.metrics.map(m => (
+                  <span key={m.label}>{m.label.toUpperCase()}: {m.value}</span>
+                ))}
+              </div>
+              <div className="font-bpmono mt-auto border-t border-dashed border-[var(--line)] pt-3 text-[11.5px] text-[var(--body-3)]">
+                {p.stack.join(' / ')}
+              </div>
+            </article>
+          )
+        })}
+      </div>
 
-        {/* Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFilter}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          >
-            {filtered.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
-            ))}
-          </motion.div>
-        </AnimatePresence>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-          className="mt-12 text-center"
-        >
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-6 py-3 text-sm font-medium text-zinc-300 transition-all hover:border-[#00ADB5]/30 hover:bg-[#00ADB5]/[0.08] hover:text-[#00ADB5]"
-          >
-            <GithubIcon className="h-4 w-4" />
-            View more on GitHub
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </motion.div>
+      <div className="mt-4 text-[14px]">
+        <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">view more on GitHub →</a>
       </div>
     </section>
   )

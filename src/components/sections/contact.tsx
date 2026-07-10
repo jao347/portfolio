@@ -1,100 +1,25 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Send, Mail, MapPin, ArrowUpRight, CheckCircle, Loader2 } from 'lucide-react'
-import { GithubIcon, LinkedinIcon } from '@/components/shared/icons'
-import SectionHeading from '@/components/shared/section-heading'
-import { cn } from '@/lib/utils'
 import { GITHUB_URL, LINKEDIN_URL, EMAIL } from '@/lib/constants'
 
-const SOCIALS = [
-  {
-    label: 'GitHub',
-    handle: '@jao347',
-    href: GITHUB_URL,
-    icon: GithubIcon,
-    color: 'hover:border-zinc-500/40 hover:bg-zinc-500/10 hover:text-zinc-200',
-  },
-  {
-    label: 'LinkedIn',
-    handle: 'Jay Cris Bahandi',
-    href: LINKEDIN_URL,
-    icon: LinkedinIcon,
-    color: 'hover:border-[#00ADB5]/40 hover:bg-[#00ADB5]/10 hover:text-[#00ADB5]',
-  },
-  {
-    label: 'Email',
-    handle: EMAIL,
-    href: `mailto:${EMAIL}`,
-    icon: Mail,
-    color: 'hover:border-[#00ADB5]/40 hover:bg-[#00ADB5]/10 hover:text-[#00ADB5]',
-  },
-]
-
 type FormState = 'idle' | 'loading' | 'success' | 'error'
+interface FormData { name: string; email: string; subject: string; message: string }
 
-interface FormData {
-  name: string
-  email: string
-  subject: string
-  message: string
-}
-
-function Input({
-  label,
-  id,
-  type = 'text',
-  required,
-  value,
-  onChange,
-  placeholder,
-  className,
-}: {
-  label: string
-  id: string
-  type?: string
-  required?: boolean
-  value: string
-  onChange: (v: string) => void
-  placeholder?: string
-  className?: string
-}) {
-  return (
-    <div className={cn('flex flex-col gap-1.5', className)}>
-      <label htmlFor={id} className="text-xs font-medium text-zinc-400">
-        {label}
-        {required && <span className="ml-1 text-[#00ADB5]">*</span>}
-      </label>
-      <input
-        id={id}
-        type={type}
-        required={required}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-[#00ADB5]/50 focus:bg-[#00ADB5]/[0.04] focus:ring-1 focus:ring-[#00ADB5]/30"
-      />
-    </div>
-  )
-}
+const FIELD =
+  'w-full border border-[var(--line-strong)] bg-[rgba(10,20,32,.5)] px-3 py-2.5 text-[15px] text-[var(--body)] outline-none transition-colors placeholder:text-[var(--label)]/60 focus:border-[var(--acc)]'
+const LABEL = 'font-bpmono mb-1.5 block text-[10px] tracking-[2px] uppercase text-[var(--label)]'
 
 export default function Contact() {
-  const [formState, setFormState] = useState<FormState>('idle')
-  const [data, setData] = useState<FormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  })
+  const [state, setState] = useState<FormState>('idle')
+  const [data, setData] = useState<FormData>({ name: '', email: '', subject: '', message: '' })
 
-  const update = (field: keyof FormData) => (value: string) =>
-    setData(d => ({ ...d, [field]: value }))
+  const update = (f: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setData(d => ({ ...d, [f]: e.target.value }))
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setFormState('loading')
-
+    setState('loading')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -102,195 +27,82 @@ export default function Contact() {
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error('Request failed')
-
-      setFormState('success')
+      setState('success')
       setData({ name: '', email: '', subject: '', message: '' })
-      setTimeout(() => setFormState('idle'), 4000)
+      setTimeout(() => setState('idle'), 4000)
     } catch {
-      setFormState('error')
+      setState('error')
     }
   }
 
   return (
-    <section id="contact" className="relative py-28 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Let's build something"
-          titleHighlight="great together"
-          description="Have a project in mind or want to discuss an opportunity? I'd love to hear from you."
-        />
-
-        <div className="grid gap-8 lg:grid-cols-5">
-          {/* Left: Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-2 flex flex-col gap-6"
-          >
-            {/* Availability */}
-            <div className="glass rounded-2xl p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#00ADB5] opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#00ADB5]" />
-                </span>
-                <p className="text-xs font-medium text-[#00ADB5] uppercase tracking-widest">Available Now</p>
-              </div>
-              <h3 className="font-semibold text-zinc-100 text-base mb-2">Ready to collaborate</h3>
-              <p className="text-sm text-zinc-500 leading-relaxed mb-4">
-                I&apos;m currently open to full-time roles, freelance projects, and consulting engagements.
-                Response time: within 24 hours.
-              </p>
-              <div className="flex items-center gap-1.5 text-sm text-zinc-500">
-                <MapPin className="h-3.5 w-3.5 flex-shrink-0 text-[#00ADB5]" />
-                Cebu, Philippines · GMT+8
-              </div>
+    <section id="contact" className="mt-16">
+      <div className="-rotate-[0.3deg] border-2 border-[var(--acc)] px-6 py-8 sm:px-10">
+        <div className="flex flex-wrap items-start justify-between gap-6">
+          <div>
+            <div className="font-marker text-[28px] text-[var(--ink)] sm:text-[34px]">
+              LET&apos;S BUILD SOMETHING GREAT.
             </div>
-
-            {/* Socials */}
-            <div className="space-y-2.5">
-              {SOCIALS.map(s => (
-                <motion.a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 4 }}
-                  className={cn(
-                    'flex items-center gap-3 glass rounded-xl p-4 text-zinc-400 transition-all duration-200',
-                    'border border-white/[0.07]', s.color
-                  )}
-                >
-                  <div className="h-8 w-8 flex-shrink-0 flex items-center justify-center rounded-lg border border-white/[0.07] bg-white/[0.04]">
-                    <s.icon className="h-4 w-4" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs text-zinc-600">{s.label}</p>
-                    <p className="text-sm font-medium truncate">{s.handle}</p>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </motion.a>
-              ))}
+            <p className="mt-3 max-w-[480px] text-[15px] leading-[24px] text-[var(--body-2)]">
+              Have a project in mind or want to discuss an opportunity? Open to full-time roles,
+              freelance projects, and consulting engagements.
+            </p>
+            <div className="font-bpmono mt-4 text-[13px] leading-6 text-[var(--body-3)]">
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <br />
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">github.com/jao347</a> ·{' '}
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">linkedin/jay-cris-bahandi</a>
             </div>
-          </motion.div>
-
-          {/* Right: Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-3"
-          >
-            <div className="glass rounded-2xl p-6 sm:p-8">
-              {formState === 'success' ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center gap-4 py-12 text-center"
-                >
-                  <div className="h-16 w-16 rounded-full border border-[#00ADB5]/30 bg-[#00ADB5]/10 flex items-center justify-center">
-                    <CheckCircle className="h-8 w-8 text-[#00ADB5]" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-zinc-100">Message sent!</h3>
-                  <p className="text-sm text-zinc-500 max-w-xs">
-                    Thanks for reaching out. I&apos;ll get back to you within 24 hours.
-                  </p>
-                </motion.div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <Input
-                      label="Your Name"
-                      id="name"
-                      required
-                      value={data.name}
-                      onChange={update('name')}
-                      placeholder="John Smith"
-                    />
-                    <Input
-                      label="Email Address"
-                      id="email"
-                      type="email"
-                      required
-                      value={data.email}
-                      onChange={update('email')}
-                      placeholder="john@company.com"
-                    />
-                  </div>
-
-                  <Input
-                    label="Subject"
-                    id="subject"
-                    required
-                    value={data.subject}
-                    onChange={update('subject')}
-                    placeholder="Project inquiry, job opportunity, consultation..."
-                  />
-
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="message" className="text-xs font-medium text-zinc-400">
-                      Message <span className="text-[#00ADB5]">*</span>
-                    </label>
-                    <textarea
-                      id="message"
-                      required
-                      value={data.message}
-                      onChange={e => update('message')(e.target.value)}
-                      placeholder="Tell me about your project, timeline, budget, or anything else you'd like to discuss..."
-                      rows={5}
-                      className="rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition-all focus:border-[#00ADB5]/50 focus:bg-[#00ADB5]/[0.04] focus:ring-1 focus:ring-[#00ADB5]/30 resize-none"
-                    />
-                  </div>
-
-                  {formState === 'error' && (
-                    <p role="alert" className="text-sm text-[#00ADB5]">
-                      Couldn&apos;t send your message. Please email me directly at{' '}
-                      <a href={`mailto:${EMAIL}`} className="underline">{EMAIL}</a>.
-                    </p>
-                  )}
-
-                  <motion.button
-                    type="submit"
-                    disabled={formState === 'loading'}
-                    whileHover={{ scale: formState === 'loading' ? 1 : 1.02 }}
-                    whileTap={{ scale: formState === 'loading' ? 1 : 0.98 }}
-                    className={cn(
-                      'flex items-center justify-center gap-2.5 rounded-xl py-3.5 text-sm font-semibold text-white transition-all',
-                      'disabled:opacity-70 disabled:cursor-not-allowed',
-                    )}
-                    style={{
-                      background: 'linear-gradient(135deg, #00ADB5, #00ADB5)',
-                      boxShadow: '0 0 20px rgba(0, 173, 181,0.35)',
-                    }}
-                  >
-                    {formState === 'loading' ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4" />
-                        Send Message
-                      </>
-                    )}
-                  </motion.button>
-
-                  <p className="text-center text-xs text-zinc-600">
-                    Or email me directly at{' '}
-                    <a href={`mailto:${EMAIL}`} className="text-[#00ADB5] hover:text-[#00ADB5] transition-colors">
-                      {EMAIL}
-                    </a>
-                  </p>
-                </form>
-              )}
+          </div>
+          <div className="flex flex-col items-end gap-3">
+            <div className="font-bpmono rotate-[3deg] rounded border-2 border-[var(--stamp)] px-3.5 py-2 text-[11px] font-bold tracking-[2px] text-[var(--stamp)]">
+              REPLIES &lt; 24H
             </div>
-          </motion.div>
+            <div className="font-shadows -rotate-1 text-[17px] text-[var(--label)]">
+              Cebu, Philippines · GMT+8
+            </div>
+          </div>
         </div>
+
+        {/* form */}
+        {state === 'success' ? (
+          <p className="font-marker mt-8 text-[22px] text-[var(--acc)]">Message sent — talk soon! ✎</p>
+        ) : (
+          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4 border-t border-dashed border-[var(--line-strong)] pt-8">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="name" className={LABEL}>Your Name</label>
+                <input id="name" required value={data.name} onChange={update('name')} className={FIELD} placeholder="John Smith" />
+              </div>
+              <div>
+                <label htmlFor="email" className={LABEL}>Email</label>
+                <input id="email" type="email" required value={data.email} onChange={update('email')} className={FIELD} placeholder="john@company.com" />
+              </div>
+            </div>
+            <div>
+              <label htmlFor="subject" className={LABEL}>Subject</label>
+              <input id="subject" required value={data.subject} onChange={update('subject')} className={FIELD} placeholder="Project inquiry, job opportunity..." />
+            </div>
+            <div>
+              <label htmlFor="message" className={LABEL}>Message</label>
+              <textarea id="message" required rows={5} value={data.message} onChange={update('message')} className={`${FIELD} resize-none`} placeholder="Tell me about your project, timeline, or anything else..." />
+            </div>
+
+            {state === 'error' && (
+              <p role="alert" className="text-[15px] text-[var(--stamp)]">
+                Couldn&apos;t send. Email me directly at <a href={`mailto:${EMAIL}`}>{EMAIL}</a>.
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={state === 'loading'}
+              className="font-bpmono self-start rounded border-2 border-[var(--acc)] px-6 py-2.5 text-xs font-bold tracking-[2px] uppercase text-[var(--acc)] transition-colors hover:bg-[var(--acc)] hover:text-[var(--desk)] disabled:opacity-60"
+            >
+              {state === 'loading' ? 'SENDING...' : 'SEND MESSAGE ✉'}
+            </button>
+          </form>
+        )}
       </div>
     </section>
   )

@@ -1,141 +1,46 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { Briefcase, MapPin, Calendar, ArrowRight } from 'lucide-react'
-import SectionHeading from '@/components/shared/section-heading'
 import { experiences } from '@/data/experience'
-import { cn } from '@/lib/utils'
-
-const TYPE_COLORS: Record<string, string> = {
-  'full-time': 'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
-  'contract':  'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
-  'freelance': 'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
-  'part-time': 'border-[#00ADB5]/20 bg-[#00ADB5]/10 text-[#00ADB5]',
-}
-
-const COMPANY_GRADIENTS: Record<string, string> = {
-  codebox:    'from-[#00ADB5] to-[#00ADB5]',
-  vertex:     'from-[#00ADB5] to-[#00ADB5]',
-  blocklabs:  'from-[#00ADB5] to-[#00ADB5]',
-  virginia:   'from-[#00ADB5] to-[#00ADB5]',
-  ripeconcepts: 'from-[#00ADB5] to-[#00ADB5]',
-  wisebox:    'from-[#00ADB5] to-[#00ADB5]',
-}
+import SectionHeading from '@/components/shared/section-heading'
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-28 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading
-          eyebrow="Experience"
-          title="Where I've"
-          titleHighlight="worked"
-          description="A journey through companies where I've shipped products, led teams, and grown as an engineer."
-        />
+    <section id="experience" className="mt-16">
+      <SectionHeading title="WHERE I'VE WORKED" caption="shipping products, leading features, growing as an engineer" />
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#00ADB5]/30 via-white/[0.05] to-transparent hidden lg:block" />
+      <div className="mt-5 flex flex-col gap-[22px]">
+        {experiences.map(exp => (
+          <div
+            key={exp.id}
+            className="flex flex-col gap-3 border border-[var(--line)] bg-[rgba(10,20,32,.4)] px-6 py-5 sm:flex-row sm:gap-6"
+          >
+            {/* left rail */}
+            <div className="flex-none sm:w-[150px]">
+              <div className="font-bpmono text-[11px] leading-[18px] text-[var(--label)]">{exp.period}</div>
+              <div className="font-bpmono mt-1.5 text-[10px] tracking-[1px] text-[var(--stamp)]">
+                {exp.type.replace('-', ' ').toUpperCase()} · {exp.duration.toUpperCase()}
+              </div>
+              <div className="mt-1.5 text-sm text-[var(--label)]">{exp.location}</div>
+            </div>
 
-          <div className="space-y-4">
-            {experiences.map((exp, i) => {
-              const gradient = COMPANY_GRADIENTS[exp.id] ?? 'from-[#00ADB5] to-[#00ADB5]'
-
-              return (
-                <motion.div
-                  key={exp.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ delay: i * 0.08, duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
-                  className="flex gap-6 lg:pl-16"
-                >
-                  {/* Timeline dot */}
-                  <div className="relative hidden lg:flex flex-col items-center absolute -left-3">
-                    <div
-                      className={cn(
-                        'absolute -left-[46px] top-6 h-3 w-3 rounded-full border-2 border-zinc-950',
-                        'bg-gradient-to-r', gradient
-                      )}
-                    />
+            {/* right content */}
+            <div className="flex-1">
+              <div className="font-gochi text-[22px] text-[var(--ink)]">
+                {exp.role} <span className="text-[var(--acc)]">@ {exp.company}</span>
+              </div>
+              <div className="mt-1.5 text-[14px] leading-[22px] text-[var(--body-2)]">{exp.description}</div>
+              <div className="mt-2.5 flex flex-col gap-1.5">
+                {exp.achievements.map((a, i) => (
+                  <div key={i} className="flex gap-2.5 text-[13px] leading-5 text-[var(--body-3)]">
+                    <span className="text-[var(--acc)]">→</span>
+                    <span>{a}</span>
                   </div>
-
-                  {/* Card */}
-                  <div className="flex-1 glass gradient-border-hover group rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                      <div className="flex items-start gap-4">
-                        {/* Company icon */}
-                        <div className={cn(
-                          'flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-white/[0.07]',
-                          'bg-gradient-to-br opacity-80', gradient
-                        )}>
-                          <Briefcase className="h-5 w-5 text-white" />
-                        </div>
-
-                        <div>
-                          <h3 className="font-semibold text-zinc-100 text-base">{exp.role}</h3>
-                          <p className="text-sm font-medium text-[#00ADB5]">{exp.company}</p>
-
-                          <div className="mt-2 flex flex-wrap gap-3 text-xs text-zinc-500">
-                            <span className="flex items-center gap-1">
-                              <Calendar className="h-3 w-3" />
-                              {exp.period}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <MapPin className="h-3 w-3" />
-                              {exp.location}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 flex-shrink-0">
-                        <span className={cn('rounded-full border px-3 py-1 text-[11px] font-medium', TYPE_COLORS[exp.type])}>
-                          {exp.type.replace('-', ' ')}
-                        </span>
-                        <span className="text-[11px] text-zinc-600 border border-white/[0.06] bg-white/[0.03] rounded-full px-3 py-1">
-                          {exp.duration}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mb-4 text-sm text-zinc-400 leading-relaxed">{exp.description}</p>
-
-                    {/* Achievements */}
-                    <ul className="mb-5 space-y-2">
-                      {exp.achievements.map((a, ai) => (
-                        <motion.li
-                          key={ai}
-                          initial={{ opacity: 0, x: -8 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: i * 0.05 + ai * 0.04 + 0.2 }}
-                          className="flex items-start gap-2 text-sm text-zinc-500"
-                        >
-                          <ArrowRight className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#00ADB5]" />
-                          {a}
-                        </motion.li>
-                      ))}
-                    </ul>
-
-                    {/* Tech chips */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {exp.tech.map(t => (
-                        <span
-                          key={t}
-                          className="rounded-lg border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-[11px] text-zinc-400"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
+                ))}
+              </div>
+              <div className="font-bpmono mt-2.5 border-t border-dashed border-[var(--line)] pt-2 text-[11px] text-[var(--label)]">
+                {exp.tech.join(' · ')}
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   )

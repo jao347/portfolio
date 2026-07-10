@@ -1,18 +1,27 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist_Mono, Permanent_Marker, Gochi_Hand, Shadows_Into_Light } from 'next/font/google'
 import './globals.css'
-import LoadingScreen from '@/components/shared/loading-screen'
-import CustomCursor from '@/components/shared/cursor'
-import ScrollProgress from '@/components/shared/scroll-progress'
-import CommandPalette from '@/components/shared/command-palette'
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-})
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
+
+const marker = Permanent_Marker({
+  weight: '400',
+  variable: '--font-marker',
+  subsets: ['latin'],
+})
+
+const gochi = Gochi_Hand({
+  weight: '400',
+  variable: '--font-gochi',
+  subsets: ['latin'],
+})
+
+const shadows = Shadows_Into_Light({
+  weight: '400',
+  variable: '--font-shadows',
   subsets: ['latin'],
 })
 
@@ -72,7 +81,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#222831',
+  themeColor: '#101319',
   width: 'device-width',
   initialScale: 1,
 }
@@ -83,10 +92,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${marker.variable} ${gochi.variable} ${shadows.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="bg-[#222831] text-zinc-50 antialiased selection:bg-[#00ADB5]/30 selection:text-white">
+      <body className="antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -117,10 +126,6 @@ export default function RootLayout({
             }),
           }}
         />
-        <LoadingScreen />
-        <CustomCursor />
-        <ScrollProgress />
-        <CommandPalette />
         {children}
       </body>
     </html>

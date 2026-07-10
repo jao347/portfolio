@@ -1,50 +1,21 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
-
 interface SectionHeadingProps {
-  eyebrow?: string
   title: string
-  titleHighlight?: string
-  description?: string
-  centered?: boolean
-  className?: string
+  caption: string
 }
 
-export default function SectionHeading({
-  eyebrow,
-  title,
-  titleHighlight,
-  description,
-  centered = false,
-  className,
-}: SectionHeadingProps) {
+/* Blueprint section heading: marker title + dashed baseline rule, with a
+   rotated handwritten caption beneath. Static so it's always visible
+   (no scroll-gated reveal that can leave it blank). */
+export default function SectionHeading({ title, caption }: SectionHeadingProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
-      className={cn('mb-16', centered && 'text-center', className)}
-    >
-      {eyebrow && (
-        <div className={cn('mb-5 inline-flex items-center gap-3', centered && 'justify-center')}>
-          <span className="h-1.5 w-1.5 bg-[#00ADB5]" />
-          <span className="mono-label">{eyebrow}</span>
-        </div>
-      )}
-      <h2 className="text-3xl font-semibold tracking-tight text-zinc-50 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1]">
-        {title}{' '}
-        {titleHighlight && (
-          <span className="gradient-text">{titleHighlight}</span>
-        )}
+    <div>
+      <h2 className="font-marker flex items-baseline gap-3.5 text-[28px] text-[var(--ink)] sm:text-[32px]">
+        {title}
+        <span className="bp-rule" />
       </h2>
-      {description && (
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-          {description}
-        </p>
-      )}
-    </motion.div>
+      <div className="font-shadows mt-1.5 -rotate-[0.8deg] text-[17px] text-[var(--acc)]">
+        {caption}
+      </div>
+    </div>
   )
 }

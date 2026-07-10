@@ -60,6 +60,19 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    id: 'ai',
+    title: 'AI',
+    icon: '⬡',
+    gradient: 'from-[#00ADB5] to-[#00ADB5]',
+    skills: [
+      { name: 'Claude', level: 95 },
+      { name: 'ChatGPT', level: 92 },
+      { name: 'Gemini', level: 88 },
+      { name: 'Cursor', level: 90 },
+      { name: 'Google Flow', level: 85 },
+    ],
+  },
+  {
     id: 'tools',
     title: 'Tools & DevOps',
     icon: '⬡',
