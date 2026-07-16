@@ -16,8 +16,8 @@ const LINKS = [
 
 export default function Hero() {
   return (
-    <section id="home" className="mt-6">
-      <div className="flex flex-col items-start gap-10 sm:flex-row sm:gap-10">
+    <section id="home" className="mt-2 sm:mt-6">
+      <div className="flex flex-col items-start gap-6 sm:flex-row sm:gap-10">
         {/* taped photo */}
         <div className="relative flex-none -rotate-[2.5deg] bg-[#e9e4d6] p-[10px] pb-[30px] shadow-[0_6px_16px_rgba(0,0,0,.45)]">
           <div className="absolute -top-3 left-11 h-6 w-[76px] rotate-[4deg] bg-[rgba(220,220,215,.5)] shadow-[0_1px_3px_rgba(0,0,0,.2)]" />
@@ -33,12 +33,12 @@ export default function Hero() {
         </div>
 
         {/* intro column */}
-        <div className="pt-1.5">
+        <div className="w-full min-w-0 pt-1.5 sm:w-auto">
           <div className="font-gochi -rotate-1 text-xl text-[var(--acc)]">spec sheet — hello, I&apos;m</div>
-          <h1 className="font-marker mt-1 text-[40px] leading-[1.1] text-[var(--ink)] sm:text-[54px]">
+          <h1 className="font-marker mt-1 text-[32px] leading-[1.1] text-[var(--ink)] sm:text-[54px]">
             JAY CRIS BAHANDI
           </h1>
-          <div className="font-bpmono mt-2.5 text-[13px] tracking-[2px] text-[var(--label)]">
+          <div className="font-bpmono mt-2.5 text-[11px] tracking-[2px] text-[var(--label)] sm:text-[13px]">
             SENIOR FULL-STACK DEVELOPER · CEBU, PHILIPPINES
           </div>
           <p className="mt-4 max-w-[600px] text-[15px] leading-[26px] text-[var(--body)]">
@@ -69,7 +69,7 @@ export default function Hero() {
       </div>
 
       {/* stats strip */}
-      <div className="mt-10 grid grid-cols-2 border border-[var(--line-strong)] sm:grid-cols-4">
+      <div className="mt-8 grid grid-cols-2 border border-[var(--line-strong)] sm:mt-10 sm:grid-cols-4">
         {STATS.map((s, i) => (
           <div
             key={s.label}

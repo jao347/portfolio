@@ -16,7 +16,7 @@ export default function Projects() {
     : projects.filter(p => p.category === filter || p.tags.includes(filter))
 
   return (
-    <section id="projects" className="mt-16">
+    <section id="projects" className="mt-10 sm:mt-16">
       <SectionHeading title="THINGS I'VE BUILT" caption="enterprise SaaS, Web3 platforms, analytics & AI automation" />
 
       {/* filter pills */}

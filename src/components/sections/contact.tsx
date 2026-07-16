@@ -36,8 +36,8 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="mt-16">
-      <div className="-rotate-[0.3deg] border-2 border-[var(--acc)] px-6 py-8 sm:px-10">
+    <section id="contact" className="mt-10 sm:mt-16">
+      <div className="-rotate-[0.3deg] border-2 border-[var(--acc)] px-5 py-6 sm:px-10 sm:py-8">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div>
             <div className="font-marker text-[28px] text-[var(--ink)] sm:text-[34px]">
@@ -68,7 +68,7 @@ export default function Contact() {
         {state === 'success' ? (
           <p className="font-marker mt-8 text-[22px] text-[var(--acc)]">Message sent — talk soon! ✎</p>
         ) : (
-          <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-4 border-t border-dashed border-[var(--line-strong)] pt-8">
+          <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4 border-t border-dashed border-[var(--line-strong)] pt-6 sm:mt-8 sm:pt-8">
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label htmlFor="name" className={LABEL}>Your Name</label>

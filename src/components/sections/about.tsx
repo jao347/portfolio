@@ -16,10 +16,10 @@ const STACK = [
 
 export default function About() {
   return (
-    <section id="about" className="mt-16">
+    <section id="about" className="mt-10 sm:mt-16">
       <SectionHeading title="ABOUT ME" caption="building products with purpose & craft ✎" />
 
-      <div className="mt-4 flex flex-col gap-9 lg:flex-row">
+      <div className="mt-4 flex flex-col gap-6 lg:flex-row lg:gap-9">
         {/* left column */}
         <div className="lg:flex-[1.5]">
           <p className="text-[15px] leading-[26px] text-[var(--body)]">

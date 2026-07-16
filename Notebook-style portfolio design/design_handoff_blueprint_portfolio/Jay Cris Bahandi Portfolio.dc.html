@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;family=Gochi+Hand&amp;family=Shadows+Into+Light&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#101319;font-family:'Gochi Hand',cursive}
+a{color:#e8b64c;text-decoration-thickness:1px}a:hover{color:#d95b3d}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#101319;padding:48px 24px;display:flex;justify-content:center" data-screen-label="Portfolio">
+<div style="--acc:{{ accent }};position:relative;width:100%;max-width:1000px;background:#122a41;background-image:linear-gradient(rgba(140,190,230,.14) 1px, transparent 1px),linear-gradient(90deg, rgba(140,190,230,.14) 1px, transparent 1px),linear-gradient(rgba(140,190,230,.05) 1px, transparent 1px),linear-gradient(90deg, rgba(140,190,230,.05) 1px, transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;border:1px solid rgba(140,190,230,.25);box-shadow:0 12px 40px rgba(0,0,0,.6);padding:56px 60px 64px">
+
+  <!-- blueprint title block -->
+  <div style="position:absolute;top:0;right:0;border-left:1px solid rgba(140,190,230,.4);border-bottom:1px solid rgba(140,190,230,.4);font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:1px;color:#7fa8c9;padding:10px 16px;line-height:18px;text-align:right">PROJECT: PORTFOLIO — J.C. BAHANDI<br>SCALE: 1:1 · SHEET 1 OF 1 · REV 06<br>CEBU, PH · GMT+8</div>
+
+  <!-- ============ HERO ============ -->
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-top:24px" data-screen-label="Hero">
+    <div style="position:relative;flex:none;transform:rotate(-2.5deg);background:#e9e4d6;padding:10px 10px 30px;box-shadow:0 6px 16px rgba(0,0,0,.45)">
+      <div style="position:absolute;top:-12px;left:44px;width:76px;height:24px;background:rgba(220,220,215,.5);transform:rotate(4deg);box-shadow:0 1px 3px rgba(0,0,0,.2)"></div>
+      <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="jay-photo" shape="rect" fit="cover" placeholder="Drop your photo" style="width:190px;height:210px" hint-size="190px,210px"></x-import>
+      <div style="font-family:'Shadows Into Light',cursive;font-size:16px;color:#555;text-align:center;margin-top:6px">the developer, on site</div>
+    </div>
+    <div style="padding-top:6px">
+      <div style="font-size:20px;color:var(--acc,#e8b64c);transform:rotate(-1deg)">spec sheet — hello, I'm</div>
+      <h1 style="margin:4px 0 0;font-family:'Permanent Marker',cursive;font-size:54px;line-height:1.1;color:#f2efe6;font-weight:400">JAY CRIS BAHANDI</h1>
+      <div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:2px;color:#7fa8c9;margin-top:10px">SENIOR FULL-STACK DEVELOPER · CEBU, PHILIPPINES</div>
+      <p style="margin:18px 0 0;font-size:20px;line-height:30px;color:#d9e4ee;max-width:560px">I build scalable applications, AI-powered automations, and modern digital systems that deliver exceptional user experiences — from backend APIs to blockchain integrations.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:20px;align-items:center">
+        <sc-if value="{{ showStamp }}" hint-placeholder-val="{{ true }}">
+          <div style="transform:rotate(2deg);border:3px solid #d95b3d;color:#d95b3d;font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:12px;letter-spacing:2px;padding:8px 14px;border-radius:4px">AVAILABLE FOR WORK</div>
+        </sc-if>
+        <a href="https://github.com/jao347" style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:1px;border:1px solid rgba(140,190,230,.4);color:#9fb8cd;padding:9px 14px;border-radius:4px;text-decoration:none">GITHUB ↗</a>
+        <a href="https://www.linkedin.com/in/jay-cris-bahandi-0a3b9821a/" style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:1px;border:1px solid rgba(140,190,230,.4);color:#9fb8cd;padding:9px 14px;border-radius:4px;text-decoration:none">LINKEDIN ↗</a>
+        <a href="mailto:jcnbahandi@gmail.com" style="font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:1px;border:1px solid rgba(140,190,230,.4);color:#9fb8cd;padding:9px 14px;border-radius:4px;text-decoration:none">EMAIL ✉</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- stats strip -->
+  <div style="display:flex;margin-top:40px;border:1px solid rgba(140,190,230,.35)">
+    <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+      <div style="flex:1;padding:16px 22px;border-right:1px solid rgba(140,190,230,.35)">
+        <div style="font-family:'Permanent Marker',cursive;font-size:36px;color:var(--acc,#e8b64c);line-height:1">{{ st.n }}</div>
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:1px;color:#7fa8c9;text-transform:uppercase;margin-top:4px">{{ st.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <div data-screen-label="About">
+  <h2 style="margin:64px 0 6px;font-family:'Permanent Marker',cursive;font-size:32px;color:#f2efe6;font-weight:400;display:flex;align-items:baseline;gap:14px">ABOUT ME <span style="flex:1;border-bottom:1px dashed rgba(140,190,230,.4)"></span></h2>
+  <div style="font-family:'Shadows Into Light',cursive;font-size:17px;color:var(--acc,#e8b64c);transform:rotate(-.8deg);margin-bottom:14px">building products with purpose &amp; craft ✎</div>
+  <div style="display:flex;gap:36px;align-items:flex-start">
+    <div style="flex:1.5">
+      <p style="margin:0;font-size:19px;line-height:29px;color:#d9e4ee">I'm a passionate full-stack developer with over 6 years of experience building production-grade applications across different industries — from enterprise procurement systems to blockchain-powered marketplaces.</p>
+      <p style="margin:14px 0 0;font-size:19px;line-height:29px;color:#d9e4ee">My approach combines strong engineering principles with product-focused thinking. I care deeply about both the technical quality of the code and the experience it creates for end users — whether it's designing a scalable API architecture or crafting pixel-perfect interfaces.</p>
+      <p style="margin:14px 0 0;font-size:19px;line-height:29px;color:#d9e4ee">Beyond traditional web development, I've been deeply involved in <span style="border-bottom:3px solid var(--acc,#e8b64c)">AI automation workflows</span> and <span style="border-bottom:3px solid var(--acc,#e8b64c)">Web3 applications</span> — areas I believe represent the next wave of transformative software.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:22px">
+        <sc-for list="{{ capabilities }}" as="c" hint-placeholder-count="6">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:1px;color:#9fb8cd;border:1px solid rgba(140,190,230,.4);padding:6px 12px;border-radius:3px">{{ c }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px">
+      <div style="border:1px solid rgba(140,190,230,.35);padding:18px 22px;background:rgba(10,20,32,.45)">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:2px;color:#7fa8c9">BASED IN</div>
+        <div style="font-family:'Permanent Marker',cursive;font-size:26px;color:#f2efe6;margin-top:4px">Cebu, Philippines</div>
+        <div style="font-size:16px;color:#9fb8cd;margin-top:2px">GMT+8 · open to remote work worldwide</div>
+      </div>
+      <div style="border:1px solid rgba(140,190,230,.35);padding:18px 22px;background:rgba(10,20,32,.45)">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:2px;color:#7fa8c9">STATUS</div>
+        <div style="font-family:'Permanent Marker',cursive;font-size:22px;color:var(--acc,#e8b64c);margin-top:4px">Open to opportunities</div>
+        <div style="font-size:16px;line-height:24px;color:#9fb8cd;margin-top:2px">full-time roles, freelance projects, or consulting work</div>
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#d95b3d;border:1px solid #d95b3d;padding:3px 8px;border-radius:3px">REMOTE</span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#d95b3d;border:1px solid #d95b3d;padding:3px 8px;border-radius:3px">FULL-TIME</span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#d95b3d;border:1px solid #d95b3d;padding:3px 8px;border-radius:3px">FREELANCE</span>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(140,190,230,.35);padding:18px 22px;background:rgba(10,20,32,.45)">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:2px;color:#7fa8c9">CURRENT STACK</div>
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:22px;color:#9fb8cd;margin-top:6px">Next.js 15 · TypeScript · NestJS · PostgreSQL · Tailwind CSS · Framer Motion · Wagmi · Docker</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ============ SKILLS ============ -->
+  <div data-screen-label="Skills">
+  <h2 style="margin:64px 0 6px;font-family:'Permanent Marker',cursive;font-size:32px;color:#f2efe6;font-weight:400;display:flex;align-items:baseline;gap:14px">THE STACK <span style="flex:1;border-bottom:1px dashed rgba(140,190,230,.4)"></span></h2>
+  <div style="font-family:'Shadows Into Light',cursive;font-size:17px;color:var(--acc,#e8b64c);transform:rotate(-.8deg);margin-bottom:18px">technologies I work with, honestly graded</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px 36px">
+    <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="6">
+      <div style="border:1px solid rgba(140,190,230,.3);background:rgba(10,20,32,.45);padding:18px 22px">
+        <div style="font-family:'Permanent Marker',cursive;font-size:20px;color:#f2efe6;margin-bottom:12px">{{ g.group }}</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="4">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline">
+                <span style="font-size:17px;color:#d9e4ee">{{ s.name }}</span>
+                <sc-if value="{{ showSkillBars }}" hint-placeholder-val="{{ true }}"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7fa8c9">{{ s.pct }}%</span></sc-if>
+              </div>
+              <sc-if value="{{ showSkillBars }}" hint-placeholder-val="{{ true }}">
+                <div style="height:5px;background:rgba(140,190,230,.15);margin-top:4px;border-radius:2px"><div style="height:5px;width:{{ s.pct }}%;background:var(--acc,#e8b64c);border-radius:2px"></div></div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="display:flex;gap:36px;margin-top:22px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#7fa8c9;letter-spacing:1px">
+    <span><b style="color:var(--acc,#e8b64c);font-size:15px">8+</b> LANGUAGES</span>
+    <span><b style="color:var(--acc,#e8b64c);font-size:15px">12+</b> FRAMEWORKS</span>
+    <span><b style="color:var(--acc,#e8b64c);font-size:15px">20+</b> TOOLS</span>
+    <span><b style="color:var(--acc,#e8b64c);font-size:15px">6+</b> YEARS LEARNING</span>
+  </div>
+  </div>
+
+  <!-- ============ PROJECTS ============ -->
+  <div data-screen-label="Projects">
+  <h2 style="margin:64px 0 6px;font-family:'Permanent Marker',cursive;font-size:32px;color:#f2efe6;font-weight:400;display:flex;align-items:baseline;gap:14px">THINGS I'VE BUILT <span style="flex:1;border-bottom:1px dashed rgba(140,190,230,.4)"></span></h2>
+  <div style="font-family:'Shadows Into Light',cursive;font-size:17px;color:var(--acc,#e8b64c);transform:rotate(-.8deg);margin-bottom:18px">enterprise SaaS, Web3 platforms, analytics &amp; AI automation</div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+      <div style="display:flex;gap:22px;align-items:flex-start;background:rgba(10,20,32,.5);border:1px solid rgba(140,190,230,.25);padding:18px 22px">
+        <div style="flex:none;font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:14px;color:var(--acc,#e8b64c);padding-top:5px">{{ p.num }}</div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+            <span style="font-size:23px;color:#f2efe6">{{ p.title }}</span>
+            <span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:2px;color:#7fa8c9;border:1px solid rgba(140,190,230,.4);padding:2px 8px;border-radius:3px;text-transform:uppercase">{{ p.category }}</span>
+            <sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}"><span style="font-family:ui-monospace,Menlo,monospace;font-size:10px;font-weight:700;letter-spacing:2px;color:#d95b3d;border:2px solid #d95b3d;padding:2px 7px;border-radius:3px;transform:rotate(-2deg)">FEATURED</span></sc-if>
+          </div>
+          <div style="font-size:18px;line-height:26px;color:#b9c9d8;margin-top:3px">{{ p.blurb }}</div>
+          <div style="display:flex;gap:26px;margin-top:8px;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7fa8c9;flex-wrap:wrap">
+            <span>{{ p.meta1 }}</span><span>{{ p.meta2 }}</span><span>{{ p.meta3 }}</span>
+          </div>
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#9fb8cd;margin-top:8px;border-top:1px dashed rgba(140,190,230,.25);padding-top:8px">{{ p.stack }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="margin-top:18px;font-size:18px"><a href="https://github.com/jao347">view more on GitHub →</a></div>
+  </div>
+
+  <!-- ============ EXPERIENCE ============ -->
+  <div data-screen-label="Experience">
+  <h2 style="margin:64px 0 6px;font-family:'Permanent Marker',cursive;font-size:32px;color:#f2efe6;font-weight:400;display:flex;align-items:baseline;gap:14px">WHERE I'VE WORKED <span style="flex:1;border-bottom:1px dashed rgba(140,190,230,.4)"></span></h2>
+  <div style="font-family:'Shadows Into Light',cursive;font-size:17px;color:var(--acc,#e8b64c);transform:rotate(-.8deg);margin-bottom:20px">shipping products, leading features, growing as an engineer</div>
+  <div style="display:flex;flex-direction:column;gap:22px">
+    <sc-for list="{{ jobs }}" as="j" hint-placeholder-count="6">
+      <div style="display:flex;gap:24px;border:1px solid rgba(140,190,230,.25);background:rgba(10,20,32,.4);padding:20px 24px">
+        <div style="flex:none;width:150px">
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;line-height:18px;color:#7fa8c9">{{ j.dates }}</div>
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#d95b3d;margin-top:6px;letter-spacing:1px">{{ j.duration }}</div>
+          <div style="font-size:14px;color:#7fa8c9;margin-top:6px">{{ j.location }}</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-size:22px;color:#f2efe6">{{ j.role }} <span style="color:var(--acc,#e8b64c)">@ {{ j.co }}</span></div>
+          <div style="font-size:17px;line-height:25px;color:#b9c9d8;margin-top:4px">{{ j.desc }}</div>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:3px">
+            <sc-for list="{{ j.bullets }}" as="b" hint-placeholder-count="3">
+              <div style="display:flex;gap:10px;font-size:16px;line-height:23px;color:#9fb8cd"><span style="color:var(--acc,#e8b64c)">→</span><span>{{ b }}</span></div>
+            </sc-for>
+          </div>
+          <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#7fa8c9;margin-top:10px;border-top:1px dashed rgba(140,190,230,.25);padding-top:8px">{{ j.tags }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <div data-screen-label="Contact">
+  <div style="margin-top:64px;border:2px solid var(--acc,#e8b64c);padding:34px 40px;transform:rotate(-.3deg)">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'Permanent Marker',cursive;font-size:34px;color:#f2efe6">LET'S BUILD SOMETHING GREAT.</div>
+        <div style="font-size:19px;line-height:28px;color:#b9c9d8;margin-top:8px;max-width:480px">Have a project in mind or want to discuss an opportunity? Open to full-time roles, freelance projects, and consulting engagements.</div>
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#9fb8cd;margin-top:16px;line-height:24px"><a href="mailto:jcnbahandi@gmail.com">jcnbahandi@gmail.com</a><br><a href="https://github.com/jao347">github.com/jao347</a> · <a href="https://www.linkedin.com/in/jay-cris-bahandi-0a3b9821a/">linkedin/jay-cris-bahandi</a></div>
+      </div>
+      <div style="flex:none;display:flex;flex-direction:column;gap:12px;align-items:flex-end">
+        <div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:2px;color:#d95b3d;border:2px solid #d95b3d;padding:8px 14px;border-radius:4px;transform:rotate(3deg)">REPLIES &lt; 24H</div>
+        <div style="font-family:'Shadows Into Light',cursive;font-size:17px;color:#7fa8c9;transform:rotate(-1deg)">Cebu, Philippines · GMT+8</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:28px;text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:1px;color:#5d6b7c">© 2026 JAY CRIS BAHANDI · DRAWN UP IN CEBU, PHILIPPINES</div>
+  </div>
+
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e8b64c&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e8b64c&quot;,&quot;#6cc3e0&quot;,&quot;#d95b3d&quot;],&quot;section&quot;:&quot;Style&quot;},&quot;showSkillBars&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;showStamp&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? "#e8b64c",
+      showSkillBars: this.props.showSkillBars ?? true,
+      showStamp: this.props.showStamp ?? true,
+      stats: [
+        { n: "6+", label: "years experience" },
+        { n: "30+", label: "projects shipped" },
+        { n: "15+", label: "clients served" },
+        { n: "∞", label: "cups of coffee" },
+      ],
+      capabilities: ["Full-Stack Web Development", "AI & Automation Systems", "Web3 & Blockchain Apps", "Enterprise Architecture", "API Design & Integration", "UI/UX Implementation"],
+      skillGroups: [
+        { group: "Frontend", items: [{ name: "React", pct: 95 }, { name: "Next.js", pct: 95 }, { name: "TypeScript", pct: 90 }, { name: "Tailwind CSS", pct: 92 }, { name: "Material UI", pct: 88 }] },
+        { group: "Backend", items: [{ name: "Node.js", pct: 92 }, { name: "NestJS", pct: 88 }, { name: "Laravel", pct: 85 }] },
+        { group: "Databases", items: [{ name: "PostgreSQL", pct: 90 }, { name: "MongoDB", pct: 88 }, { name: "MySQL", pct: 90 }, { name: "MSSQL", pct: 80 }] },
+        { group: "Blockchain & Web3", items: [{ name: "Wagmi", pct: 85 }, { name: "Ethers.js", pct: 82 }, { name: "Solidity", pct: 75 }, { name: "Wallet Connect", pct: 88 }] },
+        { group: "AI & Automation", items: [{ name: "Make", pct: 88 }, { name: "n8n", pct: 85 }] },
+        { group: "Tools & DevOps", items: [{ name: "Docker", pct: 82 }, { name: "GitHub", pct: 95 }, { name: "Vercel", pct: 92 }, { name: "Figma", pct: 80 }] },
+      ],
+      projects: [
+        { num: "01", featured: true, category: "Automation", title: "Automation & Workflow System", blurb: "Internal automation and workflow management system.", meta1: "TYPE: Internal Tool", meta2: "STATUS: Active", meta3: "", stack: "Next.js / Node.js / PostgreSQL" },
+        { num: "02", featured: true, category: "Enterprise", title: "E-Procurement System", blurb: "Procurement management platform built at Vertex with workflow automation and vendor management.", meta1: "ROLE: Full-Stack Developer", meta2: "DURATION: 6 months", meta3: "TEAM: 5–10", stack: "Next.js / NestJS / TypeScript / PostgreSQL" },
+        { num: "03", featured: true, category: "Web3", title: "Web3 dApp Interface", blurb: "NFT and Web3 application frontend built using modern blockchain technologies.", meta1: "ROLE: Frontend Developer", meta2: "DURATION: 2 years", meta3: "CHAINS: EVM-compatible", stack: "Next.js / React / TypeScript / Wagmi / Ethers.js" },
+        { num: "04", featured: false, category: "Analytics", title: "URL Tracking System", blurb: "URL shortening and basic analytics tracking system.", meta1: "TYPE: Portfolio Project", meta2: "STATUS: Complete", meta3: "", stack: "Node.js / Express / PostgreSQL / React" },
+        { num: "05", featured: false, category: "Analytics", title: "Campaign Dashboard", blurb: "Marketing campaign management and reporting dashboard.", meta1: "TYPE: Portfolio Project", meta2: "STATUS: Complete", meta3: "", stack: "React / Next.js / Node.js / MongoDB" },
+        { num: "06", featured: false, category: "Data", title: "Data Processing Tool", blurb: "CSV upload and data processing application for analytics.", meta1: "TYPE: Portfolio Project", meta2: "STATUS: Complete", meta3: "", stack: "Next.js / Node.js / PostgreSQL" },
+      ],
+      jobs: [
+        { dates: "Sept 2023 — Nov 2025", duration: "FULL TIME · 2+ YRS", location: "Cebu, PH (Remote)", role: "Full-Stack Developer", co: "The Codebox Inc", desc: "Built and maintained full-stack web applications using modern technologies. Transitioned from Laravel/jQuery stack to React and MERN stack during tenure.", bullets: ["Developed multiple production applications using Laravel, React, and Node.js", "Worked with MongoDB, Express, React, and Node.js for modern web solutions", "Collaborated with team on feature development and code reviews"], tags: "React · Next.js · Node.js · Laravel · MySQL · MongoDB · Docker · AWS" },
+        { dates: "July 2024 — Jan 2025", duration: "FULL TIME · 6 MO", location: "Remote", role: "Full-Stack Developer", co: "Vertex", desc: "Contributed to the development of an E-Procurement web application using modern technologies and best practices.", bullets: ["Developed features for procurement workflow system", "Worked with Next.js, NestJS, React and TypeScript", "Collaborated on database design and optimization with PostgreSQL"], tags: "Next.js · NestJS · TypeScript · PostgreSQL · Redis · React Query" },
+        { dates: "Feb 2022 — Jan 2024", duration: "FULL TIME · 2 YRS", location: "Remote", role: "Frontend Developer", co: "The Block Labs", desc: "Developed Web2 and Web3 applications using Next.js, React, TypeScript, and blockchain technologies.", bullets: ["Built Web3 dApp interfaces with wallet connectivity", "Worked with Wagmi and Ethers.js for blockchain integration", "Developed responsive UI components with Tailwind CSS and Material UI", "Collaborated with team on application architecture and code quality"], tags: "Next.js · TypeScript · Wagmi · Ethers.js · Solidity · Material Tailwind" },
+        { dates: "April 2019 — Aug 2023", duration: "FULL TIME · 4+ YRS", location: "Cebu, Philippines", role: "Application Developer", co: "Virginia Food Inc", desc: "Developed internal web applications to streamline business processes using Laravel, HTML, CSS, JavaScript, jQuery, and MySQL.", bullets: ["Built multiple internal applications for operations and business processes", "Developed backend solutions using Laravel and PHP", "Created user-friendly interfaces with HTML, CSS, and jQuery", "Maintained and improved existing systems based on user feedback"], tags: "Laravel · React · MySQL · Bootstrap · PHP · REST APIs" },
+        { dates: "Aug 2018 — Feb 2019", duration: "FULL TIME · 6 MO", location: "Cebu, Philippines", role: "Design Associate & QA", co: "Ripeconcepts", desc: "Reviewed and prepared client card designs using Adobe Photoshop, Illustrator, and Lightroom for print-ready standards.", bullets: ["Reviewed client design deliverables for quality assurance", "Ensured designs met print-ready standards and client expectations", "Used Adobe Photoshop, Illustrator, and Lightroom for design preparation"], tags: "Photoshop · Illustrator · Lightroom · InDesign · Figma" },
+        { dates: "Apr 2018 — July 2018", duration: "FULL TIME · 4 MO", location: "Cebu, Philippines", role: "Web Developer", co: "Wisebox IT Solutions", desc: "Built and customized websites for local clients using WordPress CMS, ensuring responsive design and client-specific functionality.", bullets: ["Developed multiple WordPress websites for local clients", "Customized themes and plugins for client requirements", "Ensured responsive design across devices"], tags: "WordPress · PHP · HTML · CSS · JavaScript · MySQL · SEO" },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

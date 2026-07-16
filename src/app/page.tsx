@@ -8,8 +8,8 @@ import Footer from '@/components/layout/footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--desk)] p-4 sm:p-6">
-      <div className="bp-sheet relative w-full border border-[var(--line)] px-6 py-12 shadow-[0_12px_40px_rgba(0,0,0,.6)] sm:px-12 sm:pt-14 sm:pb-16 lg:px-16">
+    <main className="min-h-screen bg-[var(--desk)] p-3 sm:p-6">
+      <div className="bp-sheet relative w-full border border-[var(--line)] px-4 py-8 shadow-[0_12px_40px_rgba(0,0,0,.6)] sm:px-12 sm:pt-14 sm:pb-16 lg:px-16">
         {/* drafting title block */}
         <div className="font-bpmono absolute right-0 top-0 hidden border-b border-l border-[var(--line-strong)] px-4 py-2.5 text-right text-[10px] leading-[18px] tracking-[1px] text-[var(--label)] sm:block">
           PROJECT: PORTFOLIO — J.C. BAHANDI<br />

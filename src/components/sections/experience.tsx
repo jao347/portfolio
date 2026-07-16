@@ -3,14 +3,14 @@ import SectionHeading from '@/components/shared/section-heading'
 
 export default function Experience() {
   return (
-    <section id="experience" className="mt-16">
+    <section id="experience" className="mt-10 sm:mt-16">
       <SectionHeading title="WHERE I'VE WORKED" caption="shipping products, leading features, growing as an engineer" />
 
-      <div className="mt-5 flex flex-col gap-[22px]">
+      <div className="mt-5 flex flex-col gap-4 sm:gap-[22px]">
         {experiences.map(exp => (
           <div
             key={exp.id}
-            className="flex flex-col gap-3 border border-[var(--line)] bg-[rgba(10,20,32,.4)] px-6 py-5 sm:flex-row sm:gap-6"
+            className="flex flex-col gap-3 border border-[var(--line)] bg-[rgba(10,20,32,.4)] px-4 py-4 sm:flex-row sm:gap-6 sm:px-6 sm:py-5"
           >
             {/* left rail */}
             <div className="flex-none sm:w-[150px]">

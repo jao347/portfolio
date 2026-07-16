@@ -16,7 +16,7 @@ const label = (id: string, title: string) => (id === 'automation' ? 'AI & Automa
 
 export default function Skills() {
   return (
-    <section id="skills" className="mt-16">
+    <section id="skills" className="mt-10 sm:mt-16">
       <SectionHeading title="THE STACK" caption="technologies I work with, honestly graded" />
 
       <div className="mt-4 grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
