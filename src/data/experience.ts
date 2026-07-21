@@ -22,7 +22,7 @@ export const experiences: Experience[] = [
     company: 'Vertex',
     role: 'Full-Stack Developer',
     period: 'July 2024 — Jan 2025',
-    duration: '6 months',
+    duration: 'Project-based',
     location: 'Remote',
     description: 'Contributed to the development of an E-Procurement web application using modern technologies and best practices.',
     achievements: [
@@ -31,14 +31,14 @@ export const experiences: Experience[] = [
       'Collaborated on database design and optimization with PostgreSQL',
     ],
     tech: ['Next.js', 'NestJS', 'TypeScript', 'PostgreSQL', 'Redis', 'React Query'],
-    type: 'full-time',
+    type: 'part-time',
   },
   {
     id: 'blocklabs',
     company: 'The Block Labs',
     role: 'Frontend Developer',
     period: 'Feb 2022 — Jan 2024',
-    duration: '2 years',
+    duration: 'Project-based',
     location: 'Remote',
     description: 'Developed Web2 and Web3 applications using Next.js, React, TypeScript, and blockchain technologies.',
     achievements: [
@@ -48,7 +48,7 @@ export const experiences: Experience[] = [
       'Collaborated with team on application architecture and code quality',
     ],
     tech: ['Next.js', 'TypeScript', 'Wagmi', 'Ethers.js', 'Solidity', 'Material Tailwind'],
-    type: 'full-time',
+    type: 'part-time',
   },
   {
     id: 'virginia',

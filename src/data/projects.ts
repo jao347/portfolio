@@ -3,6 +3,94 @@ import { GITHUB_URL } from "@/lib/constants";
 
 export const projects: Project[] = [
   {
+    id: "puzzle-events",
+    title: "PuzzleEvents",
+    description:
+      "Interactive event platform where guests collectively unlock a hero image tile-by-tile by scanning personalized QR codes.",
+    longDescription:
+      "An event-engagement SaaS that turns a shared image into a live puzzle reveal — each guest scans a unique QR code to unlock their tile on a projector-friendly dashboard. Handles automated image tiling by guest count, spreadsheet roster import, table assignment, and QR asset export.",
+    tags: ["Events", "SaaS", "QR", "Real-time"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+    metrics: [
+      { label: "Type", value: "SaaS Product" },
+      { label: "Status", value: "Live" },
+      { label: "Role", value: "Full-Stack Developer" },
+    ],
+    features: [
+      "QR-first guest-to-tile mapping",
+      "Automated image tiling by guest count",
+      "Live dual-view / projector dashboard",
+      "Spreadsheet roster import & table assignment",
+      "QR asset export (print / email)",
+    ],
+    live: "http://puzzle-events.xyz/",
+    gradient: "from-[#00ADB5] to-[#00ADB5]",
+    category: "SaaS",
+    featured: true,
+  },
+  {
+    id: "paddlego",
+    title: "PaddleGo",
+    description:
+      "Booking & venue-management SaaS for pickleball and padel courts — 24/7 reservations, payments, and live open-play scoreboards.",
+    longDescription:
+      "A branded booking platform for racquet-sport venues combining online court reservations, QR/AI-verified payments, dynamic pricing, and an admin operations dashboard. Includes an open-play system with live scoreboard, rotation management, standings, and TV casting.",
+    tags: ["SaaS", "Booking", "Sports", "Payments"],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+    metrics: [
+      { label: "Type", value: "SaaS Product" },
+      { label: "Status", value: "Live" },
+      { label: "Role", value: "Full-Stack Developer" },
+    ],
+    features: [
+      "24/7 online booking with double-book prevention",
+      "Per-venue branded subdomain pages",
+      "Dynamic time-of-day / peak / holiday pricing",
+      "QRPH + AI-verified scan-to-pay",
+      "Open-play live scoreboard with TV casting",
+      "Admin dashboard: scheduler, refunds, revenue reports",
+    ],
+    live: "https://www.paddlego.fit/",
+    gradient: "from-[#00ADB5] to-[#00ADB5]",
+    category: "SaaS",
+    featured: true,
+  },
+  {
+    id: "leadhunter-ai",
+    title: "LeadHunter AI",
+    description:
+      "AI SaaS for agencies to discover local business leads, audit their websites, score opportunities, and generate outreach.",
+    longDescription:
+      "A lead-generation platform that finds local businesses, runs parallel website audits (SEO, mobile, SSL, contact, social) via Playwright, scores each lead hot/warm/cold, discovers contact info, and generates AI-written outreach (cold email, follow-up, proposals) using Claude with an OpenAI fallback. Built on a queue-driven Express/MongoDB backend with JWT + RBAC auth.",
+    tags: ["SaaS", "AI", "Automation", "Lead Gen"],
+    stack: [
+      "Next.js",
+      "Express",
+      "TypeScript",
+      "MongoDB",
+      "Redis",
+      "BullMQ",
+      "Playwright",
+      "Claude API",
+    ],
+    metrics: [
+      { label: "Type", value: "SaaS Product" },
+      { label: "Role", value: "Full-Stack Developer" },
+      { label: "Status", value: "In Development" },
+    ],
+    features: [
+      "Local lead discovery with CSV import",
+      "Parallel website analysis (SEO / mobile / SSL / contact / social)",
+      "Lead scoring — hot / warm / cold",
+      "Automated contact discovery",
+      "AI outreach generation (Claude + OpenAI fallback)",
+      "JWT + RBAC auth with refresh tokens",
+    ],
+    gradient: "from-[#00ADB5] to-[#00ADB5]",
+    category: "SaaS",
+    featured: true,
+  },
+  {
     id: "ai-workflow-platform",
     title: "Automation & Workflow System",
     description: "Internal automation and workflow management system.",

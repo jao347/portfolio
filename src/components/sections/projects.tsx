@@ -6,7 +6,7 @@ import { GITHUB_URL } from '@/lib/constants'
 import SectionHeading from '@/components/shared/section-heading'
 import { cn } from '@/lib/utils'
 
-const FILTERS = ['All', 'Automation', 'Enterprise', 'Web3', 'Analytics', 'Data']
+const FILTERS = ['All', 'SaaS', 'Automation', 'Enterprise', 'Web3', 'Analytics', 'Data']
 
 export default function Projects() {
   const [filter, setFilter] = useState('All')
@@ -54,6 +54,16 @@ export default function Projects() {
                   <span className="font-bpmono -rotate-2 rounded-[3px] border-2 border-[var(--stamp)] px-[7px] py-0.5 text-[10px] font-bold tracking-[2px] text-[var(--stamp)]">
                     FEATURED
                   </span>
+                )}
+                {p.live && (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bpmono ml-auto rounded-[3px] border border-[var(--acc)] px-2 py-0.5 text-[10px] tracking-[1px] text-[var(--acc)] no-underline hover:bg-[var(--acc)] hover:text-[var(--desk)]"
+                  >
+                    LIVE ↗
+                  </a>
                 )}
               </div>
               <div className="font-gochi mt-2 text-[22px] leading-tight text-[var(--ink)]">{p.title}</div>
