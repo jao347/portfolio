@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#122a41"/>
+  <path d="M0 11h32M0 21h32M11 0v32M21 0v32" stroke="#8cbee6" stroke-opacity="0.14" stroke-width="1"/>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6" fill="none" stroke="#8cbee6" stroke-opacity="0.4"/>
+  <text x="16" y="24" text-anchor="middle" font-family="'Courier New', ui-monospace, monospace" font-size="21" font-weight="700" fill="#e8b64c">J</text>
+</svg>
